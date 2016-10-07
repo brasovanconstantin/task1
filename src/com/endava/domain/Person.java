@@ -1,7 +1,8 @@
 package com.endava.domain;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 
 public class Person {
@@ -73,13 +74,29 @@ public class Person {
 				+ capacity + "]";
 	}
 
-	public List<Person> filter(List<Person> persons) {
-		List<Person> maleList = new ArrayList<>();
-		for (Person person : persons) {
-			if (person.getGender() == Sex.MALE) {
-				maleList.add(person);
-			}
-		}
-		return maleList;
+	 /*
+	 * public static List<Person> filter(List<Person> persons) { List<Person>
+	 * maleList = new ArrayList<>(); for (Person person : persons) { if
+	 * (person.getGender() == Sex.MALE) { maleList.add(person); } } return
+	 * maleList; }
+	 */
+
+	/*public static Predicate<Person> isMale() {
+		return p -> p.getGender() == Sex.MALE;
+	}*/
+	
+	
+	static class PersonPredicate {	
+		
+		public static final Predicate<Person> IS_MALE = p -> p.getGender()==Sex.MALE; 
+				
+		
+	}
+	
+	public static List<Person> filterPersons(List<Person> persons,
+			Predicate<Person> predicate) {
+
+		return persons.stream().filter(predicate)
+				.collect(Collectors.<Person> toList());
 	}
 }
