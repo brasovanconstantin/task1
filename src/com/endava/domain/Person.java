@@ -1,4 +1,4 @@
-package com.endava.models;
+package com.endava.domain;
 
 import java.util.ArrayList;
 import java.util.List;

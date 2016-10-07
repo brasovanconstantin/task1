@@ -1,4 +1,4 @@
-package com.endava.models;
+package com.endava.domain;
 
 public class Rule {
 
@@ -65,5 +65,6 @@ public class Rule {
 				+ personGender + ", disable=" + disable + ", cost=" + cost
 				+ "]";
 	}
-
+	
+	
 }

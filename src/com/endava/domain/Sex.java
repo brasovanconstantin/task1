@@ -1,4 +1,4 @@
-package com.endava.models;
+package com.endava.domain;
 
 public enum Sex {
 	

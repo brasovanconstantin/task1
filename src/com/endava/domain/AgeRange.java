@@ -1,4 +1,4 @@
-package com.endava.models;
+package com.endava.domain;
 
 public class AgeRange {
 
@@ -6,12 +6,21 @@ public class AgeRange {
 	private int maxAge;
 
 	public AgeRange() {
-		super();
 	}
 
 	public AgeRange(int minAge, int maxAge) {
-		super();
-		this.minAge = minAge;
+
+		if ((minAge >= 0)) {
+			this.minAge = minAge;
+		} else {
+			throw new IllegalArgumentException();
+		}
+		if ((maxAge >= minAge) && (maxAge <= Integer.MAX_VALUE)) {
+			this.maxAge = maxAge;
+		} else {
+			throw new IllegalArgumentException();
+		}
+
 		this.maxAge = maxAge;
 	}
 
@@ -20,10 +29,7 @@ public class AgeRange {
 	}
 
 	public void setMinAge(int minAge) {
-		if (minAge >= 0) {
-			this.minAge = minAge;
-		}
-
+		this.minAge = minAge;
 	}
 
 	public int getMaxAge() {
@@ -31,7 +37,6 @@ public class AgeRange {
 	}
 
 	public void setMaxAge(int maxAge) {
-		if((maxAge>= 1) && (maxAge <= 100))
 		this.maxAge = maxAge;
 	}
 
