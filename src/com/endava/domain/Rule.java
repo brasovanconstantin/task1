@@ -29,7 +29,7 @@ public class Rule {
 	
 	public Rule(String s){
 		
-		String[] rule = s.split(" ");
+		String[] rule = s.split(",");
 		this.personAgeRange = new AgeRange(Integer.parseInt(rule[0]), Integer.parseInt(rule[1]));
 		this.personGender = Sex.getGender(rule[2]);
 		this.disable = Boolean.parseBoolean(rule[3]);

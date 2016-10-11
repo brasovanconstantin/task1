@@ -29,7 +29,7 @@ public class Person {
 
 	public Person(String s) {
 
-		String[] person = s.split(" ");
+		String[] person = s.split(",");
 		this.firstName = person[0];
 		this.lastName = person[1];
 		this.age = Integer.parseInt(person[2]);

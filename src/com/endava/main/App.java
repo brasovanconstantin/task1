@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import com.endava.domain.Commands;
 import com.endava.domain.Person;
+import com.endava.domain.Rule;
 
 public class App {
 
@@ -35,15 +36,6 @@ public class App {
 			case "exit":
 				return;
 
-			case "create":
-				// System.out.println("OK");
-				String[] words = input.split(" ");
-				if (words[0].equalsIgnoreCase("create")
-						&& words[1].equalsIgnoreCase("person")) {
-					Person p = new Person(words[2]);
-				}
-				break;
-
 			case "read":
 				System.out.println("OK");
 				break;
@@ -57,9 +49,25 @@ public class App {
 				break;
 
 			default:
-				System.out.println("Wrong Command");
+				
+				//create person fff,lll,15,male,false
+				//create rule 15,20,male,true,200.0
+				String[] words = input.split(" ");
+				if (words[0].equalsIgnoreCase("create")) {
+					if (words[1].equalsIgnoreCase("person")) {
+						Person p = new Person(words[2]);
+						System.out.println(p.toString());
+					} else if(words[1].equalsIgnoreCase("rule")) {
+						Rule r = new Rule(words[2]);
+						System.out.println(r.toString());
+					}
+				} else {
+					System.out.println("Wrong Command");
+				}
+
 				break;
 			}
+			
 
 		}
 	}
