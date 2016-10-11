@@ -27,6 +27,17 @@ public class Person {
 		this.disable = capacity;
 	}
 
+	public Person(String s) {
+
+		String[] person = s.split(" ");
+		this.firstName = person[0];
+		this.lastName = person[1];
+		this.age = Integer.parseInt(person[2]);
+		this.gender = Sex.getGender(person[3]);
+		this.disable = Boolean.parseBoolean(person[4]);
+
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -81,15 +92,16 @@ public class Person {
 	 * maleList; }
 	 */
 
-	/*public static Predicate<Person> isMale() {
-		return p -> p.getGender() == Sex.MALE;
-	}*/
+	/*
+	 * public static Predicate<Person> isMale() { return p -> p.getGender() ==
+	 * Sex.MALE; }
+	 */
 
 	static class PersonPredicate {
 
 		public static final BiPredicate<Person, AgeRange> IS_IN_RANGE = (
-				Person p, AgeRange r) -> p.getAge() >= r.getMinAge()
-				&& p.getAge() <= r.getMaxAge();
+				Person p, AgeRange a) -> p.getAge() >= a.getMinAge()
+				&& p.getAge() <= a.getMaxAge();
 
 		public static final Predicate<Person> IS_MALE = p -> p.getGender() == Sex.MALE;
 

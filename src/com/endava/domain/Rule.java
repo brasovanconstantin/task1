@@ -26,6 +26,16 @@ public class Rule {
 		this.disable = disable;
 		this.cost = cost;
 	}
+	
+	public Rule(String s){
+		
+		String[] rule = s.split(" ");
+		this.personAgeRange = new AgeRange(Integer.parseInt(rule[0]), Integer.parseInt(rule[1]));
+		this.personGender = Sex.getGender(rule[2]);
+		this.disable = Boolean.parseBoolean(rule[3]);
+		this.cost = Double.parseDouble(rule[4]);
+		
+	}
 
 	public AgeRange getPersonAgeRange() {
 		return personAgeRange;
