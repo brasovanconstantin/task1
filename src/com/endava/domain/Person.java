@@ -1,17 +1,20 @@
 package com.endava.domain;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class Person {
+public class Person{
 
 	private String firstName;
 	private String lastName;
 	private int age;
 	private Sex gender;
 	private Boolean disable;
+	private String id;
+	private static int counter = 0;
 
 	public Person() {
 		super();
@@ -25,6 +28,7 @@ public class Person {
 		this.age = age;
 		this.gender = gender;
 		this.disable = capacity;
+		this.id = "" + counter++;
 	}
 
 	public Person(String s) {
@@ -35,7 +39,11 @@ public class Person {
 		this.age = Integer.parseInt(person[2]);
 		this.gender = Sex.getGender(person[3]);
 		this.disable = Boolean.parseBoolean(person[4]);
+		this.id = "" + counter++;
+	}
 
+	public String getId() {
+		return id;
 	}
 
 	public String getFirstName() {
@@ -115,4 +123,5 @@ public class Person {
 		return persons.stream().filter(predicate)
 				.collect(Collectors.<Person> toList());
 	}
+	
 }

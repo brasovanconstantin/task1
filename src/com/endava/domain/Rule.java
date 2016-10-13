@@ -6,6 +6,8 @@ public class Rule {
 	private Sex personGender;
 	private boolean disable;
 	private double cost;
+	private String id;
+	private static int counter = 0;
 
 	public Rule() {
 		super();
@@ -25,16 +27,23 @@ public class Rule {
 		this.personGender = personGender;
 		this.disable = disable;
 		this.cost = cost;
+		this.id = "" + counter++;
 	}
-	
-	public Rule(String s){
-		
+
+	public Rule(String s) {
+
 		String[] rule = s.split(",");
-		this.personAgeRange = new AgeRange(Integer.parseInt(rule[0]), Integer.parseInt(rule[1]));
+		this.personAgeRange = new AgeRange(Integer.parseInt(rule[0]),
+				Integer.parseInt(rule[1]));
 		this.personGender = Sex.getGender(rule[2]);
 		this.disable = Boolean.parseBoolean(rule[3]);
 		this.cost = Double.parseDouble(rule[4]);
-		
+		this.id = "" + counter++;
+
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public AgeRange getPersonAgeRange() {
@@ -75,6 +84,5 @@ public class Rule {
 				+ personGender + ", disable=" + disable + ", cost=" + cost
 				+ "]";
 	}
-	
-	
+
 }
